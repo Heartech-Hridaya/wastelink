@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import communityImpact from "../assets/Community impact.jpg"; 
 
 function About() {
     const [wasteCollected, setWasteCollected] = useState(0);
@@ -8,7 +9,7 @@ function About() {
 
     const animateCounter = (setter, target, duration = 2000) => {
         let start = 0;
-        const increment = target / (duration / 16); // 16ms ~ 60fps
+        const increment = target / (duration / 16);
         const timer = setInterval(() => {
             start += increment;
             if (start >= target) {
@@ -72,10 +73,11 @@ function About() {
                 </div>
             </div>
             <div className="about-image">
-                <img src="/api/placeholder/500/400" alt="Community impact" />
+                <img src={communityImpact} alt="Community impact" />
             </div>
         </section>
     );
 }
 
 export default About;
+

@@ -1,4 +1,5 @@
 import React from "react";
+import heroImage from "../assets/Turn_waste.jpg"; 
 
 function Hero({ openLoginModal }) {
     const handleReportClick = () => {
@@ -11,7 +12,16 @@ function Hero({ openLoginModal }) {
     };
 
     return (
-        <section id="home" className="hero">
+        <section
+            id="home"
+            className="hero"
+            style={{
+                backgroundImage: `url(${heroImage})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundAttachment: "fixed",
+            }}
+        >
             <div className="hero-content">
                 <h2>Turn Waste Into Opportunity</h2>
                 <p>
@@ -24,9 +34,6 @@ function Hero({ openLoginModal }) {
                     </button>
                     <button className="btn-secondary">Learn More</button>
                 </div>
-            </div>
-            <div className="hero-image">
-                <img src="/api/placeholder/600/400" alt="Eco-friendly waste management" />
             </div>
         </section>
     );
