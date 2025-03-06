@@ -17,14 +17,17 @@ function App() {
     const [isSuccessOpen, setIsSuccessOpen] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userName, setUserName] = useState("");
+    const [isSignUpMode, setIsSignUpMode] = useState(false); // New state for signup mode
 
-    const openLoginModal = () => {
+    const openLoginModal = (signUpMode = false) => {
+        setIsSignUpMode(signUpMode); // Set mode based on parameter
         setIsLoginOpen(true);
         document.body.style.overflow = "hidden";
     };
 
     const closeLoginModal = () => {
         setIsLoginOpen(false);
+        setIsSignUpMode(false); // Reset mode on close
         document.body.style.overflow = "auto";
     };
 
@@ -40,7 +43,7 @@ function App() {
 
     const handleLogin = (name) => {
         setIsLoggedIn(true);
-        setUserName(name || "User"); // Mock name; adjust with your new code
+        setUserName(name || "User");
         closeLoginModal();
     };
 
@@ -58,7 +61,7 @@ function App() {
                 handleLogout={handleLogout}
             />
             <main>
-                <Hero openLoginModal={openLoginModal} />
+                <Hero openLoginModal={openLoginModal} isLoggedIn={isLoggedIn} />
                 <HowItWorks />
                 <About />
                 <ReportWaste openSuccessModal={openSuccessModal} />
@@ -71,6 +74,7 @@ function App() {
                 isOpen={isLoginOpen}
                 closeModal={closeLoginModal}
                 handleLogin={handleLogin}
+                isSignUpMode={isSignUpMode} // Pass signup mode
             />
             <SuccessModal isOpen={isSuccessOpen} closeModal={closeSuccessModal} />
         </div>

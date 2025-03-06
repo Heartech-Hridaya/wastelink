@@ -53,6 +53,11 @@ function Header({ openLoginModal, isLoggedIn, userName, handleLogout }) {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    // New function to open modal in signup mode
+    const openSignUpModal = () => {
+        openLoginModal(true); // Pass true to indicate signup mode
+    };
+
     return (
         <header className={isScrolled ? "scrolled" : ""}>
             <nav>
@@ -117,10 +122,12 @@ function Header({ openLoginModal, isLoggedIn, userName, handleLogout }) {
                         </div>
                     ) : (
                         <>
-                            <button className="btn-secondary" onClick={openLoginModal}>
+                            <button className="btn-secondary" onClick={() => openLoginModal(false)}>
                                 Login
                             </button>
-                            <button className="btn-primary">Sign Up</button>
+                            <button className="btn-primary" onClick={openSignUpModal}>
+                                Sign Up
+                            </button>
                         </>
                     )}
                 </div>

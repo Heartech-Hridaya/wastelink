@@ -1,14 +1,17 @@
 import React from "react";
 import heroImage from "../assets/Turn_waste.jpg"; 
 
-function Hero({ openLoginModal }) {
+function Hero({ openLoginModal, isLoggedIn }) {
     const handleReportClick = () => {
-        const isLoggedIn = false; // Mock state; replace with actual auth later
         if (isLoggedIn) {
             document.querySelector("#report").scrollIntoView({ behavior: "smooth" });
         } else {
             openLoginModal();
         }
+    };
+
+    const handleLearnMoreClick = () => {
+        document.querySelector("#about").scrollIntoView({ behavior: "smooth" });
     };
 
     return (
@@ -32,7 +35,9 @@ function Hero({ openLoginModal }) {
                     <button className="btn-primary" onClick={handleReportClick}>
                         Report Waste Now
                     </button>
-                    <button className="btn-secondary">Learn More</button>
+                    <button className="btn-secondary" onClick={handleLearnMoreClick}>
+                        Learn More
+                    </button>
                 </div>
             </div>
         </section>
